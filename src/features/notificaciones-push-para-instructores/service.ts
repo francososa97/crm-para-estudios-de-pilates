@@ -2,7 +2,7 @@
 import { User, ApiResponse } from '@/shared/types';
 import prisma from '@/lib/prisma';
 
-export async function sendPushNotification(user: User, message: string): Promise<ApiResponse<void>> {
+export async function sendPushNotification(user: User, message: string): Promise<ApiResponse<null>> {
   try {
     // Aquí se implementaría la lógica para enviar una notificación push al usuario
     // Por ejemplo, usando un servicio de terceros como Firebase Cloud Messaging (FCM)
