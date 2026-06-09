@@ -1,20 +1,13 @@
 // Implementación de análisis de rendimiento
-import { PrismaClient } from '@prisma/client';
 import type { PaginatedResponse, User } from '@/shared/types/index.ts';
 
-const prisma = new PrismaClient();
+const performanceData: PerformanceData[] = [];
 
 export async function getPerformanceData(page: number, pageSize: number): Promise<PaginatedResponse<PerformanceData>> {
   try {
-    const total = await prisma.reservation.count();
-    const data = await prisma.reservation.findMany({
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-      include: {
-        user: true,
-        instructor: true,
-      },
-    });
+    const skip = (page - 1) * pageSize;
+    const total = performanceData.length;
+    const data = performanceData.slice(skip, skip + pageSize);
 
     return {
       data,
