@@ -1,6 +1,6 @@
 // Implementación de análisis de rendimiento
 import { PrismaClient } from '@prisma/client';
-import { PaginatedResponse, ApiResponse } from '@/shared/types/index.ts';
+import type { PaginatedResponse, User } from '@/shared/types/index.ts';
 
 const prisma = new PrismaClient();
 
