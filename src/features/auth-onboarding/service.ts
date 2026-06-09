@@ -8,7 +8,7 @@ const prisma = globalForPrisma.prisma ?? new PrismaClient();
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 
-export async function createUser(email: string, name: string, role: 'admin' | 'user'): Promise<User> {
+export async function createUser(email: string, name: string, role: User['role']): Promise<User> {
   const user = await prisma.user.create({
     data: { email, name, role }
   });
